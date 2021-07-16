@@ -106,7 +106,8 @@
       © 2020 Mesto Russia
     </p>
   </footer>
-  <div class="popup">
+  <!-- для отключение popup удалите popup_opened -->
+  <div class="popup popup_opened">
     <form class="popup__form">
       <fieldset class="popup__edit">
         <p class="popup__title">
@@ -119,15 +120,21 @@
         <label class="popup__field">
           <input class="popup__input" placeholder="ваша реклама" maxlength="40">
         </label>
-        <button class="popup__button">
+        <button class="popup__button focus">
           Сохранить
         </button>
       </fieldset>
-
-
-
+      <button class="popup__button-close focus">
+      </button>
     </form>
-    
+    <div class="popup__opacity">
+    </div>
+  </div>
+
+
+
+  </form>
+
 
   </div>
 

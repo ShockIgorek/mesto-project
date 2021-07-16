@@ -2,6 +2,7 @@
     width: 358px;
     height: 50px;
     background: #000;
+    color: #FFFFFF;
     border-radius: 2px;
 
     font-size: 18px;
@@ -10,5 +11,14 @@
     line-height: 22px;
     letter-spacing: 0em;
     text-align: center;
+    cursor: pointer;
+}
+@media screen and (max-width: 1279px) {
+    .popup__button {
+        width: 238px;
+        height: 36px;
+        font-size: 14px;
+        line-height: 17px;        
 
+    }
 }

@@ -1,0 +1,22 @@
+.popup__button-close {
+    background-image: url(../../../images/ave-maria.svg);
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+    border: none;
+    background-position: center;
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    background-color: transparent;
+
+}
+
+@media screen and (max-width: 1279px) {
+    .popup__button-close {
+        width: 20px;
+        height: 20px;        
+        right: 0;
+        top: -38px
+    }
+}

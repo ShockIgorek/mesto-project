@@ -1,0 +1,16 @@
+.button-plus {
+        /* сбос стандартной стилизации кнопки */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: 1px solid #FFF;
+        border-radius: 0;
+        background: #000;
+        min-width: 150px;
+        max-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        
+}

@@ -2,40 +2,45 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Igor Shokin">
-    <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Igor Shokin">
+  <title>Место</title>
+  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="page">
-    <header class="header">
-        <img src="./images/logo.svg" alt="логотип" class="logo">
-    </header>
-    <main>
-        <section class="profile">
-            <div class="profile__avatar" src="./images/avatar.jpg">
-            </div>
-            <div class="profile__info">
-                <h1 class="profile__name">
-                    Жак-Ив Кусто
-                    <button class="button-edit" type="button">
-                        <div class="button-edit__edit">
-                        </div>
-                    </button>
-                </h1>
-                <p class="profile__description">
-                    Исследователь океана
-                </p>
-            </div>
-            <button type="button" class="button-plus">
-                <div class="button-plus__plus">
-                </div>
+  <header class="header">
+    <img src="./images/logo.svg" alt="логотип" class="logo">
+  </header>
+  <main>
+    <section class="profile">
+      <div class="profile__column">
+        <div class="profile__avatar" src="./images/avatar.jpg">
+        </div>
+        <div class="profile__info">
+          <div class="profile__row">
+            <h1 class="profile__name">
+              Жак-Ив Кусто
+            </h1>
+            <button class="button-edit" type="button">
+              <div class="button-edit__edit">
+              </div>
             </button>
-        </section>
-    </main>
+          </div>
+          <p class="profile__description">
+            Исследователь океана
+          </p>
+        </div>
+
+      </div>
+      <button type="button" class="button-plus">
+        <div class="button-plus__plus">
+        </div>
+      </button>
+    </section>
+  </main>
 </body>
 
 </html>

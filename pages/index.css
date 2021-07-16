@@ -1,0 +1,14 @@
+@import url(../vendor/normalize.css);
+
+@import url(../vendor/fonts.css);
+
+@import url(../blocks/page/page.css);
+
+@import url(../blocks/header/header.css);
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+
+@import url(../blocks/button-edit/button-edit.css);
+@import url(../blocks/button-edit/__edit/button-edit__edit.css);

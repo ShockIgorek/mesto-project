@@ -1,0 +1,7 @@
+.button-eddit__edit{
+    margin: 0;
+    background-image: url(../../../images/pen.svg);
+    width: 10px;
+    height: 10px;
+    background-size: cover;
+}

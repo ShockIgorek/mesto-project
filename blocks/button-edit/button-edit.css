@@ -1,0 +1,11 @@
+.button-edit {
+    /* сбос стандартной стилизации кнопки */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #FFF;
+    border-radius: 0;
+    background: #000;
+    min-width: 24px;
+    min-height: 24px;
+}

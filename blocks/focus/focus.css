@@ -1,0 +1,9 @@
+.focus {
+    opacity: 1;
+    transition: opacity .4s ease;
+
+}
+.focus:hover {
+    opacity: 0.5;
+
+}

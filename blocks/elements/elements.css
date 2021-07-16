@@ -8,6 +8,7 @@
 }
 @media screen and (max-width: 1279) {
     .elements{
+        padding-top: 36px;
         max-width: 582px;
     }
     

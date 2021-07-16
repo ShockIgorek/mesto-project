@@ -6,11 +6,22 @@
         border: 1px solid #FFF;
         border-radius: 0;
         background: #000;
+        background-image: url(../../images/plus.svg);
+        background-repeat: no-repeat;
+        background-position: center;
         min-width: 150px;
         max-height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        
+
+}
+
+@media screen and (max-width: 1279px) {
+        .button-plus {
+                height: 50px;
+                max-width: 282px;
+                
+        }
 }

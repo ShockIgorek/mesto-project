@@ -5,3 +5,10 @@
     background-size: contain;
     width: 142px;
 }
+@media screen and (max-width: 1279px) {
+    .header {
+        width: 104;
+        padding: 28px 0 31px 27px;
+
+    }
+}

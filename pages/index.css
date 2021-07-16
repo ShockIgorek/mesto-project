@@ -17,10 +17,8 @@
 @import url(../blocks/profile/__column/profile__column.css);
 
 @import url(../blocks/button-edit/button-edit.css);
-@import url(../blocks/button-edit/__edit/button-edit__edit.css);
 
 @import url(../blocks/button-plus/button-plus.css);
-@import url(../blocks/button-plus/__plus/button-plus__plus.css);
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__list/elements__list.css);

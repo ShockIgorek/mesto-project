@@ -16,3 +16,10 @@
   justify-content: center;
   cursor: pointer;
 }
+
+@media screen and (max-width: 1279px) {
+  .button-edit {
+    min-width: 18px;
+    height: 18px;
+  }
+}

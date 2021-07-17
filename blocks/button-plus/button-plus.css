@@ -3,25 +3,30 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 1px solid #FFF;
-  border-radius: 0;
+  border: 2px solid #FFF;
+  border-radius: 2px;
+  box-sizing: border-box;
   background: #000;
   background-image: url(../../images/plus.svg);
   background-repeat: no-repeat;
   background-position: center;
-  min-width: 150px;
-  max-height: 50px;
+  width: 150px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
+  opacity: 1;
+  transition: opacity .4s ease;
+}
+.button-plus:hover {
+  opacity: .6;
 }
 
 @media screen and (max-width: 1279px) {
   .button-plus {
-    height: 50px;
-    max-width: 282px;
+    min-height: 50px;
+    width: 282px;
 
   }
 }

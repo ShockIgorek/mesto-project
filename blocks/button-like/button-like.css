@@ -15,8 +15,14 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity .4s ease;
+}
+.button-like:hover {
+  opacity: .5;
 }
 
 .button-like:active {
-  background-image: url(../../images/like-active.jpg);
+  opacity: 1;
+  background-image: url(../../images/like-active.svg);
 }

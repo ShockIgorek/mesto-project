@@ -3,6 +3,18 @@
 ## ссылка
 https://shokigorek.github.io/mesto-project/index.html
 
+### использованы Технологии
+
++ HTML5
++ CCS3
++ Адаптивная верстка
++ БЭМ
++ GRID
++ FlexBox
+
+## открытием и закрытием popup управляет класс 'popup_opened'
+
+
 
 ### Обзор
 
@@ -20,15 +32,5 @@ https://shokigorek.github.io/mesto-project/index.html
 
 Удачи!
 
-использованы
 
-### Технологии
 
-+ HTML5
-+ CCS3
-+ Адаптивная верстка
-+ БЭМ
-+ GRID
-+ FlexBox
-
-## открытием и закрытием popup управляет класс 'popup_opened'

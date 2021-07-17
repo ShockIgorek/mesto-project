@@ -1,12 +1,15 @@
 .footer {
+  min-width: 880px;
   max-width: 880px;
-  padding: 67px 200px 60px;
-  align-self: flex-start;
+  box-sizing: border-box;
+  padding: 67px 0 60px;
+  /* align-self: flex-start; */
 }
 
 @media screen and (max-width: 1279px) {
   .footer {
-    max-width: 282px;
+    align-self: stretch;
+    min-width: 100%;
     padding: 48px 19px 36px;
   }
 }

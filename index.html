@@ -24,7 +24,7 @@
             <h1 class="profile__name">
               Жак-Ив Кусто
             </h1>
-            <button class="button-edit focus" type="button">
+            <button  type="button" class="profile__button-edit">
             </button>
           </div>
           <p class="profile__description">
@@ -32,7 +32,7 @@
           </p>
         </div>
       </div>
-      <button type="button" class="button-plus">
+      <button type="button" class="profile__button-plus">
       </button>
     </section>
     <section class="elements">
@@ -110,20 +110,20 @@
   <div class="popup">
     <form class="popup__form">
       <fieldset class="popup__edit">
-        <p class="popup__title">
+        <h3 class="popup__title">
           Редактировать профиль
-        </p>
+        </h3>
         <label class="popup__field">
-          <input class="popup__input" placeholder="здесь может быть" maxlength="40">
+          <input class="popup__input" placeholder="Имя" maxlength="40">
         </label>
         <label class="popup__field">
-          <input class="popup__input" placeholder="ваша реклама" maxlength="40">
+          <input class="popup__input" placeholder="О себе" maxlength="40">
         </label>
-        <button class="popup__button">
+        <button type="button" class="popup__button">
           Сохранить
         </button>
       </fieldset>
-      <button class="popup__button-close">
+      <button type="button" class="popup__button-close">
       </button>
     </form>
   </div>

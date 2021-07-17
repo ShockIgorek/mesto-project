@@ -1,4 +1,4 @@
-.button-plus {
+.profile__button-plus {
   /* сбос стандартной стилизации кнопки */
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -7,11 +7,13 @@
   border-radius: 2px;
   box-sizing: border-box;
   background: #000;
-  background-image: url(../../images/plus.svg);
+  background-image: url(../../../images/plus.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 22px 22px;
   width: 150px;
   height: 50px;
+  align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,14 +21,15 @@
   opacity: 1;
   transition: opacity .4s ease;
 }
-.button-plus:hover {
+.profile__button-plus:hover {
   opacity: .6;
 }
 
 @media screen and (max-width: 1279px) {
-  .button-plus {
+  .profile__button-plus {
     min-height: 50px;
     width: 282px;
+    background-size: 16px 16px;
 
   }
 }

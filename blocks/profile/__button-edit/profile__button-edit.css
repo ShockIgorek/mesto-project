@@ -1,4 +1,4 @@
-.button-edit {
+.profile__button-edit {
   /* сбос стандартной стилизации кнопки */
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -6,11 +6,13 @@
   border: 1px solid #FFF;
   border-radius: 0;
   background: #000;
-  background-image: url(../../images/pen.svg);
+  background-image: url(../../../images/pen.svg);
   background-position: center;
   background-repeat: no-repeat;
+  background-size: 10px 10px;
   min-width: 24px;
   height: 24px;
+  align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,13 +20,14 @@
   opacity: 1;
   transition: opacity .4s linear;
 }
-.button-edit:hover {
+.profile__button-edit:hover {
   opacity: .6;
 }
 
 @media screen and (max-width: 1279px) {
-  .button-edit {
+  .profile__button-edit {
     min-width: 18px;
     height: 18px;
+    background-size: 7px 7px;
   }
 }

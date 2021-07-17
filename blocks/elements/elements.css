@@ -1,15 +1,15 @@
 .elements {
-    margin: 0;
-    max-width: 880px;
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  margin: 0;
+  max-width: 880px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 @media screen and (max-width: 1279) {
-    .elements{
-        padding-top: 36px;
-        max-width: 582px;
-    }
-    
+  .elements {
+    padding-top: 36px;
+    max-width: 582px;
+  }
 }

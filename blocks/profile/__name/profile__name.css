@@ -1,18 +1,18 @@
 .profile__name {
-    margin: 0;
-    padding-right: 18px;
-    font-size: 42px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 48px;
-    letter-spacing: 0em;
-    text-align: left;
+  margin: 0;
+  padding-right: 18px;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 48px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 @media screen and (max-width: 1279px) {
-    .profile__name {
-        padding-right: 10px;
-        font-size: 27px;
-        Line-height: 33px;
-    }
+  .profile__name {
+    padding-right: 10px;
+    font-size: 27px;
+    Line-height: 33px;
+  }
 }

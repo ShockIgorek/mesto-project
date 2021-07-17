@@ -1,8 +1,8 @@
 .element__row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #fff;
-    padding: 25px 21px 31px;
-    text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 25px 21px 31px;
+  text-align: left;
 }

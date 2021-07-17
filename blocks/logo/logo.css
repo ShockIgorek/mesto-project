@@ -1,14 +1,14 @@
 .logo {
-    margin: 0;
-    padding-bottom: 41px;
-    background-position: center;
-    background-size: contain;
-    width: 142px;
+  margin: 0;
+  padding-bottom: 41px;
+  background-position: center;
+  background-size: contain;
+  width: 142px;
 }
-@media screen and (max-width: 1279px) {
-    .header {
-        width: 104;
-        padding: 28px 0 31px 27px;
 
-    }
+@media screen and (max-width: 1279px) {
+  .header {
+    width: 104;
+    padding: 28px 0 31px 27px;
+  }
 }

@@ -1,18 +1,15 @@
 .header {
-    margin: 0;
-    min-width: 880px;
-    padding-top: 45px;
-    box-sizing: border-box;
-    max-width: 880px;
-    border-bottom: 1px solid #545454;
-
-
+  margin: 0;
+  min-width: 880px;
+  padding-top: 45px;
+  box-sizing: border-box;
+  max-width: 880px;
+  border-bottom: 1px solid #545454;
 }
 
 @media screen and (max-width: 1279px) {
-    .header {
-        align-self: stretch;
-        min-width: 100%;
-
-    }
+  .header {
+    align-self: stretch;
+    min-width: 100%;
+  }
 }

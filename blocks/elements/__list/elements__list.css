@@ -5,6 +5,7 @@
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 361px;
   /* ф фигме указанно 17px, но я предпочитаю чётные значения, надеюсь на ваше понимание :) */
   column-gap: 18px;
   row-gap: 20px;

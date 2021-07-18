@@ -24,7 +24,7 @@
             <h1 class="profile__name">
               Жак-Ив Кусто
             </h1>
-            <button  type="button" class="profile__button-edit">
+            <button type="button" class="profile__button-edit">
             </button>
           </div>
           <p class="profile__description">
@@ -107,25 +107,32 @@
     </p>
   </footer>
   <!-- для отключение popup удалите popup_opened -->
-  <div class="popup">
-    <form name="edit__profile" class="popup__form">
-      <fieldset class="popup__edit">
-        <h3 class="popup__title">
-          Редактировать профиль
-        </h3>
-        <label class="popup__field">
-          <input class="popup__input" placeholder="Имя" maxlength="40">
-        </label>
-        <label class="popup__field">
-          <input class="popup__input" placeholder="О себе" maxlength="40">
-        </label>
-        <button type="button" class="popup__button">
-          Сохранить
+  <div class="popup popup_opened">
+    <!-- задать класс когда форм будет много -->
+    <div>
+      <!-- перенести заголовок из формы -->
+      <!-- <h3 class="popup__title">
+        Редактировать профиль
+      </h3> -->
+      <form name="edit__profile" class="popup__form">
+        <fieldset class="popup__edit">
+          <h3 class="popup__title">
+            Редактировать профиль
+          </h3>
+          <label class="popup__field">
+            <input class="popup__input" placeholder="Имя" maxlength="40">
+          </label>
+          <label class="popup__field">
+            <input class="popup__input" placeholder="О себе" maxlength="40">
+          </label>
+          <button type="button" class="popup__button">
+            Сохранить
+          </button>
+        </fieldset>
+        <button type="submit" class="popup__button-close">
         </button>
-      </fieldset>
-      <button type="button" class="popup__button-close">
-      </button>
-    </form>
+      </form>
+    </div>
   </div>
 </body>
 

@@ -58,7 +58,7 @@
   </footer>
   <!-- для отключение popup удалите popup_opened -->
 
-  <div class="popup">
+  <div class="popup popup_edit">
     <!-- редактирование профиля -->
     <div class="popup-edit">
       <h3 class="popup__title">
@@ -67,10 +67,10 @@
       <form name="edit__profile" class="popup__form">
         <fieldset class="popup__edit">
           <label class="popup__field">
-            <input class="popup__input" id="inputName" placeholder="Имя" maxlength="30">
+            <input class="popup__input popup__input_name" placeholder="Имя" maxlength="30">
           </label>
           <label class="popup__field">
-            <input class="popup__input" id="inputDescription" placeholder="О себе" maxlength="40">
+            <input class="popup__input popup__input_description" placeholder="О себе" maxlength="40">
           </label>
           <button type="submit" class="popup__button">
             Сохранить
@@ -81,7 +81,7 @@
       </button>
     </div>
   </div>
-  <div class="popup">
+  <div class="popup popup_add-photo">
     <!-- добавление фотографий -->
     <div class="popup-edit">
       <h3 class="popup__title">
@@ -90,10 +90,10 @@
       <form name="edit__profile" class="popup__form">
         <fieldset class="popup__edit">
           <label class="popup__field">
-            <input class="popup__input" id="mestoName" placeholder="Название" maxlength="40">
+            <input class="popup__input popup__input_card-name" placeholder="Название" maxlength="40">
           </label>
           <label class="popup__field">
-            <input class="popup__input" id="mestoURL" placeholder="Ссылка на картинку">
+            <input class="popup__input popup__input_card-link" placeholder="Ссылка на картинку">
           </label>
           <button type="submit" class="popup__button">
             Создать
@@ -104,7 +104,7 @@
       </button>
     </div>
   </div>
-  <div class="popup">
+  <div class="popup popup_zoom">
     <!-- увеличение картинки -->
     <div class="popup-full-screen">
       <button type="button" class="popup__button-close">
@@ -115,8 +115,8 @@
       </figure>
     </div>
   </div>
-
-  <script src="./script.js"></script>
+  <script src="./scripts/initial-сards.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
 
 </html>

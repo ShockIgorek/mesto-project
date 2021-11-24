@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "https://shokigorek.github.io/mesto/\r ### технологии\r html,\r css,\r js.\r ### функционал\r Адаптивность,\r Редактирования профиля,\r Добавление своих фото,\r Удаление фотографий,\r увеличение фотографий.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShockIgorek/mesto.git"
+  },
+  "author": "Shokin Igor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShockIgorek/mesto/issues"
+  },
+  "homepage": "https://github.com/ShockIgorek/mesto#readme"
+}

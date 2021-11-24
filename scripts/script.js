@@ -1,26 +1,17 @@
-//прошу прощения в прошлый раз случайно отправил код на проверку пока читал коментарий(смотрел с телефона случайно клацанул).
-
 const profile = document.querySelector('.profile');
-//информация о пользователе
 const profileName = profile.querySelector('.profile__name');
 const profileDescription = profile.querySelector('.profile__description');
-//кнопка редактирования
 const profileButtonEdit = profile.querySelector('.profile__button-edit');
-//popup редактирования профиля
 const profileEditPopup = document.querySelector('.popup_edit');
 const newName = profileEditPopup.querySelector('.popup__input_name');
 const newDescription = profileEditPopup.querySelector('.popup__input_description');
-//popup добавления карточек
 const cardAddPopup = document.querySelector('.popup_add-photo')
 const cardDescription = cardAddPopup.querySelector('.popup__input_card-name');
 const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
-//popup для увеличения фотографий
 const photoPopup = document.querySelector('.popup_zoom');
-//карточка
 const cardCreation = document.querySelector('.card').content;
-//кнопки закрытия
 const popupCloseButton = document.querySelectorAll('.popup__button-close');
-//6 карточек перенесены в файл initial-cards.js
+
 
 
 

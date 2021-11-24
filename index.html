@@ -67,10 +67,22 @@
       <form name="edit__profile" class="popup__form">
         <fieldset class="popup__edit">
           <label class="popup__field">
-            <input class="popup__input popup__input_name" placeholder="Имя" maxlength="30">
+            <input
+            class="popup__input popup__input_name"
+            placeholder="Имя"
+            type="text"
+            minlength="2"
+            maxlength="40"
+            required>
           </label>
           <label class="popup__field">
-            <input class="popup__input popup__input_description" placeholder="О себе" maxlength="40">
+            <input
+            class="popup__input popup__input_description"
+            placeholder="О себе"
+            type="text"
+            minlength="2"
+            maxlength="200"
+            required>
           </label>
           <button type="submit" class="popup__button">
             Сохранить
@@ -90,10 +102,20 @@
       <form name="edit__profile" class="popup__form">
         <fieldset class="popup__edit">
           <label class="popup__field">
-            <input class="popup__input popup__input_card-name" placeholder="Название" maxlength="40">
+            <input
+            class="popup__input popup__input_card-name"
+            placeholder="Название"
+            type="text"
+            minlength="2"
+            maxlength="30"
+            required>
           </label>
           <label class="popup__field">
-            <input class="popup__input popup__input_card-link" placeholder="Ссылка на картинку">
+            <input
+            class="popup__input popup__input_card-link"
+            placeholder="Ссылка на картинку"
+            type="url"
+            required>
           </label>
           <button type="submit" class="popup__button">
             Создать

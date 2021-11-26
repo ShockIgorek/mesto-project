@@ -1,6 +1,3 @@
-import './pages/index.css';
-import {initialCards} from'./scripts/components/initial-сards';
-
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
 const profileDescription = profile.querySelector('.profile__description');

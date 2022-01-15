@@ -67,21 +67,25 @@
         <fieldset class="popup__edit">
           <label class="popup__field">
             <input
+            id="name"
             class="popup__input popup__input_name"
             placeholder="Имя"
             type="text"
             minlength="2"
             maxlength="40"
             required>
+            <span id="error-text" class="popup__error"></span>
           </label>
           <label class="popup__field">
             <input
             class="popup__input popup__input_description"
             placeholder="О себе"
+            id="text"
             type="text"
             minlength="2"
             maxlength="200"
             required>
+            <span id="error-text" class="popup__error"></span>
           </label>
           <button type="submit" class="popup__button">
             Сохранить
@@ -102,19 +106,23 @@
         <fieldset class="popup__edit">
           <label class="popup__field">
             <input
+            id="cardName"
             class="popup__input popup__input_card-name"
             placeholder="Название"
             type="text"
             minlength="2"
             maxlength="30"
             required>
+            <span id="error-cardName" class="popup__error"></span>
           </label>
           <label class="popup__field">
             <input
+            id="url"
             class="popup__input popup__input_card-link"
             placeholder="Ссылка на картинку"
             type="url"
             required>
+            <span id="error-url" class="popup__error"></span>
           </label>
           <button type="submit" class="popup__button">
             Создать

@@ -37,4 +37,7 @@
 @import url(../blocks/popup-full-screen/__figure/popup-full-screen__figure.css);
 @import url(../blocks/popup-full-screen/__photo/popup-full-screen__photo.css);
 @import url(../blocks/popup-full-screen/__description/popup-full-screen__description.css);
-@import url(../blocks/card/card.css)
+@import url(../blocks/card/card.css);
+@import url(../blocks/popup/__button/_disabled/popup__butoon_disabled.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_error.css);
+@import url(../blocks/popup/__error/popup__error.css);

@@ -1,12 +1,31 @@
 import '../pages/index.css';
-import {initialCards} from'./components/initial-сards';
+import {
+  initialCards
+} from './components/initial-сards';
 //валидация
+import {
+  showInputError,
+  hideInputError,
+  checkInputValidity,
+  hasInvalidInput,
+  disableButton,
+  enableButton,
+  toggleButtonState,
+  setEventListeners,
+  enableValidation
+} from './components/validate'
 // import {config} from'./components/validate';
 //модальные окна
 
 //карточки
-import {openPopup, closePopup, openPhotoPopup} from'./components/modal';
-import {createElement} from'./components/card';
+import {
+  openPopup,
+  closePopup,
+  openPhotoPopup
+} from './components/modal';
+import {
+  createElement
+} from './components/card';
 
 
 
@@ -44,10 +63,6 @@ profileEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) 
 //разметка, удаление, лайк, увеличение
 
 
-
-
-
-
 function addCards(card) {
   document.querySelector('.elements__list').prepend(createElement(card));
 }
@@ -73,3 +88,14 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
   cardDescription.value = '';
   cardLink.value = '';
 });
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error',
+
+}
+enableValidation(validationConfig)

@@ -41,6 +41,7 @@ const cardAddPopup = document.querySelector('.popup_add-photo')
 const cardDescription = cardAddPopup.querySelector('.popup__input_card-name');
 const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
 const popupCloseButton = document.querySelectorAll('.popup__button-close');
+const photoPopup = document.querySelector('.popup_zoom');
 
 const validationConfig = {
   formSelector: '.popup__form',
@@ -60,10 +61,17 @@ popupCloseButton.forEach(popup => {
 });
 
 //закрытие попапа кликом на оверлей
-document.addEventListener('click', function(evt){
-  console.log(evt.target.classList)
+document.addEventListener('click', (evt) => {
   if(evt.target.classList.contains('popup_opened')){
     closePopup(evt.target.closest('.popup'))
+  }
+});
+//закрытие попапа нажатием на esc
+document.addEventListener('keydown', (evt) => {
+  if (evt.key == "Escape" ) {
+    closePopup(cardAddPopup)
+    closePopup(profileEditPopup)
+    closePopup(photoPopup)
   }
 });
 

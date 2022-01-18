@@ -7,12 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Igor Shokin">
   <title>Место</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="page">
   <header class="header">
-    <img src="./images/logo.svg" alt="логотип" class="logo">
+    <img src="<%=require('./images/logo.svg')%>" alt="логотип" class="logo">
   </header>
   <main>
     <section class="profile">
@@ -64,25 +63,29 @@
       <h3 class="popup__title">
         Редактировать профиль
       </h3>
-      <form name="edit__profile" class="popup__form">
+      <form name="edit__profile" class="popup__form" novalidate>
         <fieldset class="popup__edit">
           <label class="popup__field">
             <input
+            id="name"
             class="popup__input popup__input_name"
             placeholder="Имя"
             type="text"
             minlength="2"
             maxlength="40"
             required>
+            <span id="error-text" class="popup__error"></span>
           </label>
           <label class="popup__field">
             <input
             class="popup__input popup__input_description"
             placeholder="О себе"
+            id="text"
             type="text"
             minlength="2"
             maxlength="200"
             required>
+            <span id="error-text" class="popup__error"></span>
           </label>
           <button type="submit" class="popup__button">
             Сохранить
@@ -99,23 +102,27 @@
       <h3 class="popup__title">
         Новое место
       </h3>
-      <form name="edit__profile" class="popup__form">
+      <form name="edit__profile" class="popup__form" novalidate>
         <fieldset class="popup__edit">
           <label class="popup__field">
             <input
+            id="cardName"
             class="popup__input popup__input_card-name"
             placeholder="Название"
             type="text"
             minlength="2"
             maxlength="30"
             required>
+            <span id="error-cardName" class="popup__error"></span>
           </label>
           <label class="popup__field">
             <input
+            id="url"
             class="popup__input popup__input_card-link"
             placeholder="Ссылка на картинку"
             type="url"
             required>
+            <span id="error-url" class="popup__error"></span>
           </label>
           <button type="submit" class="popup__button">
             Создать
@@ -137,8 +144,8 @@
       </figure>
     </div>
   </div>
-  <script src="./scripts/initial-сards.js"></script>
-  <script src="./scripts/script.js"></script>
+
+
 </body>
 
 </html>

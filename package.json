@@ -1,0 +1,35 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "https://shokigorek.github.io/mesto/\r ### технологии\r html,\r css,\r js.\r ### функционал\r Адаптивность,\r Редактирования профиля,\r Добавление своих фото,\r Удаление фотографий,\r увеличение фотографий.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShockIgorek/mesto.git"
+  },
+  "author": "Shokin Igor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShockIgorek/mesto/issues"
+  },
+  "homepage": "https://github.com/ShockIgorek/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.2"
+  },
+  "dependencies": {
+    "core-js": "^3.19.1"
+  }
+}

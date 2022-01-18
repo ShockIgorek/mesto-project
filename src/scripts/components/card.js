@@ -18,4 +18,7 @@ const createElement = (card) => {
   return element;
 }
 
+
+
+
 export {createElement}

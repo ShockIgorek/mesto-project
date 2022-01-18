@@ -42,8 +42,29 @@ const cardDescription = cardAddPopup.querySelector('.popup__input_card-name');
 const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
 const popupCloseButton = document.querySelectorAll('.popup__button-close');
 
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error',
+
+}
+enableValidation(validationConfig);
+
+
+
 popupCloseButton.forEach(popup => {
   popup.addEventListener('click', (evt) => closePopup(evt.target.closest('.popup')))
+});
+
+//закрытие попапа кликом на оверлей
+document.addEventListener('click', function(evt){
+  console.log(evt.target.classList)
+  if(evt.target.classList.contains('popup_opened')){
+    closePopup(evt.target.closest('.popup'))
+  }
 });
 
 // редактирование профиля
@@ -88,14 +109,3 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
   cardDescription.value = '';
   cardLink.value = '';
 });
-
-const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error',
-
-}
-enableValidation(validationConfig)

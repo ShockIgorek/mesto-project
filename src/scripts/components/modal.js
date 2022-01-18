@@ -13,8 +13,6 @@ const openPhotoPopup = (card) => {
   openPopup(photoPopup);
 }
 
-
-
 export {
   openPopup,
   closePopup,

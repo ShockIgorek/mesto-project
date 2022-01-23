@@ -2,7 +2,9 @@
 <https://shokigorek.github.io/mesto/>
 **технологии:**
 - html
-- css
++ css
+  - grid
+  - flex
 - js
 - Webpack
 

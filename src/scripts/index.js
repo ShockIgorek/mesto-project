@@ -49,7 +49,7 @@ const validationConfig = {
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error',
+  errorClass: 'popup__error_active',
 
 }
 enableValidation(validationConfig);
@@ -96,7 +96,7 @@ function addCards(card) {
   document.querySelector('.elements__list').prepend(createElement(card));
 }
 
-function launch() {
+const launch = () => {
   initialCards.forEach(card => {
     addCards(card)
   })

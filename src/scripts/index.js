@@ -1,40 +1,78 @@
-//прошу прощения в прошлый раз случайно отправил код на проверку пока читал коментарий(смотрел с телефона случайно клацанул).
+import '../pages/index.css';
+import {
+  initialCards
+} from './components/initial-сards';
+//валидация
+import {
+  showInputError,
+  hideInputError,
+  checkInputValidity,
+  hasInvalidInput,
+  disableButton,
+  enableButton,
+  toggleButtonState,
+  setEventListeners,
+  enableValidation
+} from './components/validate'
+// import {config} from'./components/validate';
+//модальные окна
+
+//карточки
+import {
+  openPopup,
+  closePopup,
+  openPhotoPopup
+} from './components/modal';
+import {
+  createElement
+} from './components/card';
+
+
+
 
 const profile = document.querySelector('.profile');
-//информация о пользователе
 const profileName = profile.querySelector('.profile__name');
 const profileDescription = profile.querySelector('.profile__description');
-//кнопка редактирования
 const profileButtonEdit = profile.querySelector('.profile__button-edit');
-//popup редактирования профиля
 const profileEditPopup = document.querySelector('.popup_edit');
 const newName = profileEditPopup.querySelector('.popup__input_name');
 const newDescription = profileEditPopup.querySelector('.popup__input_description');
-//popup добавления карточек
 const cardAddPopup = document.querySelector('.popup_add-photo')
 const cardDescription = cardAddPopup.querySelector('.popup__input_card-name');
 const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
-//popup для увеличения фотографий
-const photoPopup = document.querySelector('.popup_zoom');
-//карточка
-const cardCreation = document.querySelector('.card').content;
-//кнопки закрытия
 const popupCloseButton = document.querySelectorAll('.popup__button-close');
-//6 карточек перенесены в файл initial-cards.js
+const photoPopup = document.querySelector('.popup_zoom');
 
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_active',
 
-
-//открытие и закрытие попапов
-function openPopup(selector) {
-  selector.classList.add('popup_opened')
 }
+enableValidation(validationConfig);
 
-function closePopup(popup) {
-  popup.classList.remove('popup_opened')
-}
+
 
 popupCloseButton.forEach(popup => {
   popup.addEventListener('click', (evt) => closePopup(evt.target.closest('.popup')))
+});
+
+//закрытие попапа кликом на оверлей
+document.addEventListener('click', (evt) => {
+  if(evt.target.classList.contains('popup_opened')){
+    closePopup(evt.target.closest('.popup'))
+  }
+});
+//закрытие попапа нажатием на esc
+document.addEventListener('keydown', (evt) => {
+  if (evt.key == "Escape" ) {
+    closePopup(cardAddPopup)
+    closePopup(profileEditPopup)
+    closePopup(photoPopup)
+  }
 });
 
 // редактирование профиля
@@ -52,36 +90,13 @@ profileEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) 
 });
 
 //разметка, удаление, лайк, увеличение
-function createElement(card) {
-  const element = cardCreation.querySelector('.element').cloneNode(true);
-  element.querySelector('.element__photo').src = card.link;
-  element.querySelector('.element__text').textContent = card.name;
-  //удаление
-  element.querySelector('.element__button-delete').addEventListener('click', (evt) => {
-    evt.target.closest('.element').remove()
-  });
-  //лайк
-  element.querySelector('.element__button-like').addEventListener('click', (evt) => {
-    evt.target.classList.toggle('element__button-like_active')
-  });
-  //увеличение
-  element.querySelector('.element__photo').addEventListener('click', () => openPhotoPopup(card))
-  return element;
-}
-
-function openPhotoPopup(card) {
-  photoPopup.querySelector('.popup-full-screen__photo').src = card.link;
-  photoPopup.querySelector('.popup-full-screen__description').textContent = card.name;
-  openPopup(photoPopup);
-}
-
 
 
 function addCards(card) {
   document.querySelector('.elements__list').prepend(createElement(card));
 }
 
-function launch() {
+const launch = () => {
   initialCards.forEach(card => {
     addCards(card)
   })

@@ -40,7 +40,7 @@ const newDescription = profileEditPopup.querySelector('.popup__input_description
 const cardAddPopup = document.querySelector('.popup_add-photo')
 const cardDescription = cardAddPopup.querySelector('.popup__input_card-name');
 const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
-const popupCloseButton = document.querySelectorAll('.popup__button-close');
+const popupCloseButtons = document.querySelectorAll('.popup__button-close');
 const photoPopup = document.querySelector('.popup_zoom');
 
 const validationConfig = {
@@ -56,7 +56,7 @@ enableValidation(validationConfig);
 
 
 
-popupCloseButton.forEach(popup => {
+popupCloseButtons.forEach(popup => {
   popup.addEventListener('click', (evt) => closePopup(evt.target.closest('.popup')))
 });
 

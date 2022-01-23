@@ -1,6 +1,7 @@
 .elements {
   margin: 0;
   max-width: 880px;
+  min-width: 880px;
   padding-top: 50px;
   display: flex;
   flex-direction: column;
@@ -11,5 +12,6 @@
   .elements {
     padding-top: 36px;
     max-width: 582px;
+    min-width: 320px;
   }
 }

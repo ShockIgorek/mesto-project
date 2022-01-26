@@ -3,8 +3,9 @@ import {openPhotoPopup} from './modal'
 const createElement = (card) => {
   const cardCreation = document.querySelector('.card').content;
   const element = cardCreation.querySelector('.element').cloneNode(true);
-  element.querySelector('.element__photo').src = card.link;
-  element.querySelector('.element__photo').alt = card.name;
+  const cardImage = element.querySelector('.element__photo')
+  cardImage.src = card.link;
+  cardImage.alt = card.name;
   element.querySelector('.element__text').textContent = card.name;
   //удаление
   element.querySelector('.element__button-delete').addEventListener('click', (evt) => {
@@ -15,7 +16,7 @@ const createElement = (card) => {
     evt.target.classList.toggle('element__button-like_active')
   });
   //увеличение
-  element.querySelector('.element__photo').addEventListener('click', () => openPhotoPopup(card))
+  cardImage.addEventListener('click', () => openPhotoPopup(card))
   return element;
 }
 

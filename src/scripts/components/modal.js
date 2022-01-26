@@ -8,9 +8,11 @@ const closePopup = (popup) => {
 }
 const openPhotoPopup = (card) => {
   const photoPopup = document.querySelector('.popup_zoom');
-  photoPopup.querySelector('.popup-full-screen__photo').src = card.link;
-  photoPopup.querySelector('.popup-full-screen__photo').alt = card.name;
-  photoPopup.querySelector('.popup-full-screen__description').textContent = card.name;
+  const fullScreen = photoPopup.querySelector('.popup-full-screen__photo');
+  const description = photoPopup.querySelector('.popup-full-screen__description')
+  fullScreen.src = card.link;
+  fullScreen.alt = card.name;
+  description.textContent = card.name;
   openPopup(photoPopup);
 }
 

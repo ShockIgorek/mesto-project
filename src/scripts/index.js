@@ -34,6 +34,7 @@ const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
 const profileDescription = profile.querySelector('.profile__description');
 const profileButtonEdit = profile.querySelector('.profile__button-edit');
+const profileButtonPlus = profile.querySelector('.profile__button-plus');
 const profileEditPopup = document.querySelector('.popup_edit');
 const newName = profileEditPopup.querySelector('.popup__input_name');
 const newDescription = profileEditPopup.querySelector('.popup__input_description');
@@ -42,6 +43,7 @@ const cardDescription = cardAddPopup.querySelector('.popup__input_card-name');
 const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
 const popupCloseButtons = document.querySelectorAll('.popup__button-close');
 const photoPopup = document.querySelector('.popup_zoom');
+const submitButtons = document.querySelectorAll('.popup__button')
 
 const validationConfig = {
   formSelector: '.popup__form',
@@ -62,13 +64,13 @@ popupCloseButtons.forEach(popup => {
 
 //закрытие попапа кликом на оверлей
 document.addEventListener('click', (evt) => {
-  if(evt.target.classList.contains('popup_opened')){
+  if (evt.target.classList.contains('popup_opened')) {
     closePopup(evt.target.closest('.popup'))
   }
 });
 //закрытие попапа нажатием на esc
 document.addEventListener('keydown', (evt) => {
-  if (evt.key == "Escape" ) {
+  if (evt.key == "Escape") {
     closePopup(cardAddPopup)
     closePopup(profileEditPopup)
     closePopup(photoPopup)
@@ -104,7 +106,7 @@ const launch = () => {
 launch();
 
 //добавление карточки
-profile.querySelector('.profile__button-plus').addEventListener('click', () => openPopup(cardAddPopup));
+profileButtonPlus.addEventListener('click', () => openPopup(cardAddPopup));
 cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
   evt.preventDefault();
   const card = {
@@ -116,4 +118,8 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
   closePopup(cardAddPopup);
   cardDescription.value = '';
   cardLink.value = '';
+  submitButtons.forEach(e => {
+    e.disabled = true;
+    e.classList.add('popup__button_disabled');
+  })
 });

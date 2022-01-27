@@ -19,9 +19,11 @@ import {
 
 //карточки
 import {
-  openPopup,
+  // openPopup,
   closePopup,
-  openPhotoPopup
+  openPhotoPopup,
+  closeByEscape
+
 } from './components/modal';
 import {
   createElement
@@ -42,8 +44,8 @@ const cardAddPopup = document.querySelector('.popup_add-photo')
 const cardDescription = cardAddPopup.querySelector('.popup__input_card-name');
 const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
 const popupCloseButtons = document.querySelectorAll('.popup__button-close');
-const photoPopup = document.querySelector('.popup_zoom');
 const submitButtons = document.querySelectorAll('.popup__button')
+const elementsList = document.querySelector('.elements__list')
 
 const validationConfig = {
   formSelector: '.popup__form',
@@ -57,24 +59,22 @@ const validationConfig = {
 enableValidation(validationConfig);
 
 
+// const popups = document.querySelectorAll('.popup')
+// popups.forEach((popup) => {
+//   popup.addEventListener('mousedown', (evt) => {
+//       if (evt.target.classList.contains('popup_opened')) {
+//           closePopup(popup)
+//       }
+//       if (evt.target.classList.contains('popup__close')) {
+//         closePopup(popup)
+//       }
+//   })
+// })
+
+
 
 popupCloseButtons.forEach(popup => {
   popup.addEventListener('click', (evt) => closePopup(evt.target.closest('.popup')))
-});
-
-//закрытие попапа кликом на оверлей
-document.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup_opened')) {
-    closePopup(evt.target.closest('.popup'))
-  }
-});
-//закрытие попапа нажатием на esc
-document.addEventListener('keydown', (evt) => {
-  if (evt.key == "Escape") {
-    closePopup(cardAddPopup)
-    closePopup(profileEditPopup)
-    closePopup(photoPopup)
-  }
 });
 
 // редактирование профиля
@@ -95,15 +95,15 @@ profileEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) 
 
 
 function addCards(card) {
-  document.querySelector('.elements__list').prepend(createElement(card));
+  elementsList.prepend(createElement(card));
 }
 
-const launch = () => {
+const renderCards = () => {
   initialCards.forEach(card => {
     addCards(card)
   })
 }
-launch();
+renderCards();
 
 //добавление карточки
 profileButtonPlus.addEventListener('click', () => openPopup(cardAddPopup));

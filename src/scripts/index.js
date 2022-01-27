@@ -19,7 +19,7 @@ import {
 
 //карточки
 import {
-  // openPopup,
+  openPopup,
   closePopup,
   openPhotoPopup,
   closeByEscape
@@ -44,7 +44,7 @@ const cardAddPopup = document.querySelector('.popup_add-photo')
 const cardDescription = cardAddPopup.querySelector('.popup__input_card-name');
 const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
 const popupCloseButtons = document.querySelectorAll('.popup__button-close');
-const submitButtons = document.querySelectorAll('.popup__button')
+const addCardSubmitButton = document.querySelector('.popup__add-button')
 const elementsList = document.querySelector('.elements__list')
 
 const validationConfig = {
@@ -118,8 +118,7 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
   closePopup(cardAddPopup);
   cardDescription.value = '';
   cardLink.value = '';
-  submitButtons.forEach(e => {
-    e.disabled = true;
-    e.classList.add('popup__button_disabled');
-  })
+  addCardSubmitButton.disabled = true;
+  addCardSubmitButton.classList.add('popup__button_disabled');
+
 });

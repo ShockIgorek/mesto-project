@@ -1,5 +1,7 @@
 // функции для работы с карточками
-import {openPhotoPopup} from './modal'
+import {
+  openPhotoPopup
+} from './modal'
 const createElement = (card) => {
   const cardCreation = document.querySelector('.card').content;
   const element = cardCreation.querySelector('.element').cloneNode(true);
@@ -20,7 +22,6 @@ const createElement = (card) => {
   return element;
 }
 
-
-
-
-export {createElement}
+export {
+  createElement
+}

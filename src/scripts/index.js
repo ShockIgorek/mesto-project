@@ -1,36 +1,22 @@
+//css
 import '../pages/index.css';
+//загрузка карточек
 import {
   initialCards
 } from './components/initial-сards';
 //валидация
 import {
-  showInputError,
-  hideInputError,
-  checkInputValidity,
-  hasInvalidInput,
-  disableButton,
-  enableButton,
-  toggleButtonState,
-  setEventListeners,
   enableValidation
 } from './components/validate'
-// import {config} from'./components/validate';
-//модальные окна
-
-//карточки
+//работа модальных окон
 import {
   openPopup,
   closePopup,
-  openPhotoPopup,
-  closeByEscape
-
 } from './components/modal';
+//карточки
 import {
   createElement
 } from './components/card';
-
-
-
 
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
@@ -46,7 +32,6 @@ const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
 const popupCloseButtons = document.querySelectorAll('.popup__button-close');
 const addCardSubmitButton = document.querySelector('.popup__add-button')
 const elementsList = document.querySelector('.elements__list')
-
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -54,25 +39,9 @@ const validationConfig = {
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_active',
-
 }
+
 enableValidation(validationConfig);
-
-
-// const popups = document.querySelectorAll('.popup')
-// popups.forEach((popup) => {
-//   popup.addEventListener('mousedown', (evt) => {
-//       if (evt.target.classList.contains('popup_opened')) {
-//           closePopup(popup)
-//       }
-//       if (evt.target.classList.contains('popup__close')) {
-//         closePopup(popup)
-//       }
-//   })
-// })
-
-
-
 popupCloseButtons.forEach(popup => {
   popup.addEventListener('click', (evt) => closePopup(evt.target.closest('.popup')))
 });

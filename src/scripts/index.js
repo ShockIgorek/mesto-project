@@ -1,36 +1,22 @@
+//css
 import '../pages/index.css';
+//загрузка карточек
 import {
   initialCards
 } from './components/initial-сards';
 //валидация
 import {
-  showInputError,
-  hideInputError,
-  checkInputValidity,
-  hasInvalidInput,
-  disableButton,
-  enableButton,
-  toggleButtonState,
-  setEventListeners,
   enableValidation
 } from './components/validate'
-// import {config} from'./components/validate';
-//модальные окна
-
-//карточки
+//работа модальных окон
 import {
-  // openPopup,
+  openPopup,
   closePopup,
-  openPhotoPopup,
-  closeByEscape
-
 } from './components/modal';
+//карточки
 import {
   createElement
 } from './components/card';
-
-
-
 
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
@@ -44,9 +30,8 @@ const cardAddPopup = document.querySelector('.popup_add-photo')
 const cardDescription = cardAddPopup.querySelector('.popup__input_card-name');
 const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
 const popupCloseButtons = document.querySelectorAll('.popup__button-close');
-const submitButtons = document.querySelectorAll('.popup__button')
+const addCardSubmitButton = document.querySelector('.popup__add-button')
 const elementsList = document.querySelector('.elements__list')
-
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -54,25 +39,9 @@ const validationConfig = {
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_active',
-
 }
+
 enableValidation(validationConfig);
-
-
-// const popups = document.querySelectorAll('.popup')
-// popups.forEach((popup) => {
-//   popup.addEventListener('mousedown', (evt) => {
-//       if (evt.target.classList.contains('popup_opened')) {
-//           closePopup(popup)
-//       }
-//       if (evt.target.classList.contains('popup__close')) {
-//         closePopup(popup)
-//       }
-//   })
-// })
-
-
-
 popupCloseButtons.forEach(popup => {
   popup.addEventListener('click', (evt) => closePopup(evt.target.closest('.popup')))
 });
@@ -118,8 +87,22 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
   closePopup(cardAddPopup);
   cardDescription.value = '';
   cardLink.value = '';
-  submitButtons.forEach(e => {
-    e.disabled = true;
-    e.classList.add('popup__button_disabled');
-  })
+  addCardSubmitButton.disabled = true;
+  addCardSubmitButton.classList.add('popup__button_disabled');
+
 });
+
+
+
+
+
+
+fetch('https://nomoreparties.co/v1/plus-cohort-6/cards', {
+    headers: {
+      authorization: '5502817d-dfaa-490b-a84a-6a16353d0f1d'
+    }
+  })
+  .then(res => res.json())
+  .then((result) => {
+    console.log(result);
+  });

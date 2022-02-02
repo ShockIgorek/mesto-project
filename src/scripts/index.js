@@ -1,9 +1,5 @@
 //css
 import '../pages/index.css';
-//загрузка карточек
-import {
-  initialCards
-} from './components/initial-сards';
 //валидация
 import {
   enableValidation
@@ -17,6 +13,9 @@ import {
 import {
   createElement
 } from './components/card';
+//api
+import {config} from './components/api'
+
 
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
@@ -67,12 +66,13 @@ function addCards(card) {
   elementsList.prepend(createElement(card));
 }
 
+
 const renderCards = () => {
-  initialCards.forEach(card => {
+  Cards.forEach(card => {
     addCards(card)
   })
 }
-renderCards();
+
 
 //добавление карточки
 profileButtonPlus.addEventListener('click', () => openPopup(cardAddPopup));
@@ -97,12 +97,19 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
 
 
 
-fetch('https://nomoreparties.co/v1/plus-cohort-6/cards', {
-    headers: {
-      authorization: '5502817d-dfaa-490b-a84a-6a16353d0f1d'
-    }
-  })
+
+//получение карточек
+let Cards = []
+
+fetch(config.baseUrl, {headers: config.headers})
   .then(res => res.json())
   .then((result) => {
-    console.log(result);
+    console.log(result)
+    for (let i = 0; i < result.length; i++) {
+      Cards[i] = {
+        name: result[i].name,
+        link: result[i].link
+      }
+    }
+    renderCards();
   });

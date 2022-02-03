@@ -44,6 +44,6 @@ export function postCard(card, link) {
       })
     }).then(res => res.json())
     .then((result) => {
-      console.log(result)
+      console.log(result._id)
     })
 }

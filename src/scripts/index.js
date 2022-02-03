@@ -73,7 +73,7 @@ function addCards(card) {
 
 
 const renderCards = () => {
-  cards.reverse.forEach(card => {
+  cards.reverse().forEach(card => {
     addCards(card)
   })
 }
@@ -90,7 +90,7 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
     myCard: true,
   }
   addCards(card);
-  postCard(cardDescription.value, cardLink.value,)
+  postCard(cardDescription.value, cardLink.value, )
 
   closePopup(cardAddPopup);
   cardDescription.value = '';
@@ -122,24 +122,25 @@ function getName() {
   return profileName.textContent
 }
 
+
 function getCards() {
   return fetch(config.baseUrl + '/cards', {
       headers: config.headers
     })
     .then(res => res.json())
     .then((result) => {
+
       //проверяю есть ли мое имя в списке лайкнувыших
       for (let i = 0; i < result.length; i++) {
         function checkMyLike() {
-          for (let count = 0; count > Object(result[i].likes.length); count++) {
-            if (Object(result[i].likes[count]).name == getName()) {
+          for (let count = 0; count < Object(result[i].likes).length; count++) {
+            if (Object(result[i].likes[count]).name === getName()) {
               return true;
             }
           }
         }
-
         function checkMyCard() {
-          if (Object(result[i].owner).name == getName()) {
+          if (Object(result[i].owner).name === getName()) {
             return true;
           }
         }
@@ -185,11 +186,3 @@ function pathNewName() {
     })
   })
 };
-
-
-
-
-
-
-
-

@@ -12,7 +12,11 @@ const createElement = (card) => {
   const element = cardCreation.querySelector('.element').cloneNode(true);
   const cardImage = element.querySelector('.element__photo');
   const buttonLike = element.querySelector('.element__button-like');
+  const buttonDelete = element.querySelector('.element__button-delete');
   const id = card.id
+  if(!card.myCard) {
+    buttonDelete.disabled = true;
+  }
   if(card.myLikes) {
     buttonLike.classList.add('element__button-like_active')
   }
@@ -22,7 +26,7 @@ const createElement = (card) => {
   element.querySelector('.element__text').textContent = card.name;
 
   //удаление
-  element.querySelector('.element__button-delete').addEventListener('click', (evt) => {
+  buttonDelete.addEventListener('click', (evt) => {
     evt.target.closest('.element').remove()
   });
   //лайк

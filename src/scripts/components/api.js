@@ -34,3 +34,16 @@ export function updateLikes(id) {
     })
 
 }
+export function postCard(card, link) {
+  fetch(config.baseUrl + '/cards', {
+      method: 'POST',
+      headers: config.headers,
+      body: JSON.stringify({
+        name: card,
+        link: link,
+      })
+    }).then(res => res.json())
+    .then((result) => {
+      console.log(result)
+    })
+}

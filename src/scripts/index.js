@@ -15,7 +15,8 @@ import {
 } from './components/card';
 //api
 import {
-  config
+  config,
+  postCard,
 } from './components/api'
 
 
@@ -31,7 +32,7 @@ const cardAddPopup = document.querySelector('.popup_add-photo')
 const cardDescription = cardAddPopup.querySelector('.popup__input_card-name');
 const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
 const popupCloseButtons = document.querySelectorAll('.popup__button-close');
-const addCardSubmitButton = document.querySelector('.popup__add-button')
+const addCardSubmitButton = document.querySelector('.popup__add-button');
 const elementsList = document.querySelector('.elements__list');
 const elementButtonLike = document.querySelector('.element__button-like')
 const validationConfig = {
@@ -72,7 +73,7 @@ function addCards(card) {
 
 
 const renderCards = () => {
-  cards.forEach(card => {
+  cards.reverse.forEach(card => {
     addCards(card)
   })
 }
@@ -84,9 +85,12 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
   evt.preventDefault();
   const card = {
     name: cardDescription.value,
-    link: cardLink.value
+    link: cardLink.value,
+    //созданная мной карточка может удалятся
+    myCard: true,
   }
   addCards(card);
+  postCard(cardDescription.value, cardLink.value,)
 
   closePopup(cardAddPopup);
   cardDescription.value = '';
@@ -106,7 +110,7 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
 let cards = []
 
 
-function renderName() {
+function getName() {
   fetch(config.baseUrl + '/users/me', {
       headers: config.headers
     })
@@ -117,33 +121,58 @@ function renderName() {
     })
   return profileName.textContent
 }
-renderName();
 
-fetch(config.baseUrl + '/cards', {
-    headers: config.headers
-  })
-  .then(res => res.json())
-  .then((result) => {
-    console.log(result)
-    for (let i = 0; i < result.length; i++) {
-      function checkMyLike() {
-        for (let count = 0; count < Object(result[i].likes.length); count++) {
-          if (Object(result[i].likes[count]).name == renderName()) {
+function getCards() {
+  return fetch(config.baseUrl + '/cards', {
+      headers: config.headers
+    })
+    .then(res => res.json())
+    .then((result) => {
+      //проверяю есть ли мое имя в списке лайкнувыших
+      for (let i = 0; i < result.length; i++) {
+        function checkMyLike() {
+          for (let count = 0; count > Object(result[i].likes.length); count++) {
+            if (Object(result[i].likes[count]).name == getName()) {
+              return true;
+            }
+          }
+        }
+
+        function checkMyCard() {
+          if (Object(result[i].owner).name == getName()) {
             return true;
           }
         }
+        cards[i] = {
+          name: result[i].name,
+          link: result[i].link,
+          likes: result[i].likes.length,
+          id: result[i]._id,
+          myLikes: checkMyLike(),
+          myCard: checkMyCard(),
+        }
       }
-      cards[i] = {
-        name: result[i].name,
-        link: result[i].link,
-        likes: result[i].likes.length,
-        id: result[i]._id,
-        myLikes: checkMyLike()
-      }
-    }
+      return (cards)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+
+const getAppInfo = () => {
+  return Promise.all([getName(), getCards()]);
+};
+getAppInfo()
+  .then(([name, cards]) => {
+    console.log(name)
     console.log(cards)
-    renderCards();
-  });
+    renderCards()
+  })
+  .catch(err => console.log(err));
+
+
+
 
 
 function pathNewName() {
@@ -156,3 +185,11 @@ function pathNewName() {
     })
   })
 };
+
+
+
+
+
+
+
+

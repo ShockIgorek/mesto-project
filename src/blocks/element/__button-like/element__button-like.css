@@ -12,11 +12,12 @@
   cursor: pointer;
   background-color: transparent;
   background-image: url(../../../images/like.svg);
-  background-position: center;
-  background-size: cover;
+  background-position: center top;
+  background-size: 19px 22px;
   background-repeat: no-repeat;
   opacity: 1;
   transition: opacity .4s ease;
+  padding-top: 30px;
 }
 .element__button-like:hover {
   opacity: .5;

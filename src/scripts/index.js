@@ -14,7 +14,9 @@ import {
   createElement
 } from './components/card';
 //api
-import {config} from './components/api'
+import {
+  config
+} from './components/api'
 
 
 const profile = document.querySelector('.profile');
@@ -30,7 +32,8 @@ const cardDescription = cardAddPopup.querySelector('.popup__input_card-name');
 const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
 const popupCloseButtons = document.querySelectorAll('.popup__button-close');
 const addCardSubmitButton = document.querySelector('.popup__add-button')
-const elementsList = document.querySelector('.elements__list')
+const elementsList = document.querySelector('.elements__list');
+const elementButtonLike = document.querySelector('.element__button-like')
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -56,6 +59,7 @@ profileEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) 
   evt.preventDefault();
   profileName.textContent = newName.value;
   profileDescription.textContent = newDescription.value;
+  pathNewName()
   closePopup(profileEditPopup)
 });
 
@@ -68,7 +72,7 @@ function addCards(card) {
 
 
 const renderCards = () => {
-  Cards.forEach(card => {
+  cards.forEach(card => {
     addCards(card)
   })
 }
@@ -99,17 +103,56 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
 
 
 //получение карточек
-let Cards = []
+let cards = []
 
-fetch(config.baseUrl, {headers: config.headers})
+
+function renderName() {
+  fetch(config.baseUrl + '/users/me', {
+      headers: config.headers
+    })
+    .then(res => res.json())
+    .then((result) => {
+      profileName.textContent = result.name;
+      profileDescription.textContent = result.about;
+    })
+  return profileName.textContent
+}
+renderName();
+
+fetch(config.baseUrl + '/cards', {
+    headers: config.headers
+  })
   .then(res => res.json())
   .then((result) => {
     console.log(result)
     for (let i = 0; i < result.length; i++) {
-      Cards[i] = {
+      function checkMyLike() {
+        for (let count = 0; count < Object(result[i].likes.length); count++) {
+          if (Object(result[i].likes[count]).name == renderName()) {
+            return true;
+          }
+        }
+      }
+      cards[i] = {
         name: result[i].name,
-        link: result[i].link
+        link: result[i].link,
+        likes: result[i].likes.length,
+        id: result[i]._id,
+        myLikes: checkMyLike()
       }
     }
+    console.log(cards)
     renderCards();
   });
+
+
+function pathNewName() {
+  fetch(config.baseUrl + '/users/me', {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      name: newName.value,
+      about: newDescription.value
+    })
+  })
+};

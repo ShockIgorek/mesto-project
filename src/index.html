@@ -16,15 +16,14 @@
   <main>
     <section class="profile">
       <div class="profile__column">
-        <div class="profile__avatar">
-        </div>
+        <button class="profile__avatar"></button>
         <div class="profile__info">
           <div class="profile__row">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name">...</h1>
             <button type="button" class="profile__button-edit">
             </button>
           </div>
-          <p class="profile__description">Исследователь океана</p>
+          <p class="profile__description">...</p>
         </div>
       </div>
       <button type="button" class="profile__button-plus">
@@ -56,6 +55,32 @@
     </p>
   </footer>
   <!-- для отключение popup удалите popup_opened -->
+  <div class="popup popup-edit-avatar">
+    <!-- редактирование фотографии профиля -->
+    <div class="popup-edit popup-edit-photo">
+      <h3 class="popup__title">
+        Обновить аватар
+      </h3>
+      <form name="edit__profile-photo" class="popup__form" novalidate>
+        <fieldset class="popup__edit">
+          <label class="popup__field">
+            <input
+            id="photo-url"
+            class="popup__input popup-avatar"
+            placeholder="ссылка"
+            type="url"
+            required>
+            <span id="error-photo-url" class="popup__error"></span>
+          </label>
+          <button disabled type="submit" class="popup__button">
+            Сохранить
+          </button>
+        </fieldset>
+      </form>
+      <button type="button" class="popup__button-close">
+      </button>
+    </div>
+  </div>
 
   <div class="popup popup_edit">
     <!-- редактирование профиля -->

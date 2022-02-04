@@ -1,11 +1,8 @@
 // работа модальных окон
-const photoPopup = document.querySelector('.popup_zoom');
-const fullScreen = photoPopup.querySelector('.popup-full-screen__photo');
-const description = photoPopup.querySelector('.popup-full-screen__description')
-
-function closeByOverlay(evt) {
+//закртие попапа кликом на оверлей
+function closeByOverlay (evt) {
   if (evt.target.classList.contains('popup_opened')) {
-    closePopup(evt.target)
+    closePopup(evt.target.closest('.popup'))
   }
 };
 //закртие попапа кликом на esc
@@ -29,6 +26,9 @@ const closePopup = (popup) => {
 
 
 const openPhotoPopup = (card) => {
+  const photoPopup = document.querySelector('.popup_zoom');
+  const fullScreen = photoPopup.querySelector('.popup-full-screen__photo');
+  const description = photoPopup.querySelector('.popup-full-screen__description')
   fullScreen.src = card.link;
   fullScreen.alt = card.name;
   description.textContent = card.name;
@@ -39,4 +39,5 @@ export {
   openPopup,
   closePopup,
   openPhotoPopup,
+  closeByEscape
 }

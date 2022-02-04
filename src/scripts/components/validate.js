@@ -76,5 +76,13 @@ const enableValidation = ({
 };
 
 export {
+  showInputError,
+  hideInputError,
+  checkInputValidity,
+  hasInvalidInput,
+  disableButton,
+  enableButton,
+  toggleButtonState,
+  setEventListeners,
   enableValidation
 }

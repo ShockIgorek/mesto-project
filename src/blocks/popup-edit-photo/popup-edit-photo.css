@@ -1,0 +1,8 @@
+.popup-edit-photo {
+  height: 272px;
+  margin: 0;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  width: 430px;
+}

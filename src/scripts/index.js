@@ -19,7 +19,7 @@ import {cards,
   getAppInfo,
   getPhoto,
   pathNewName,
-  postPhoto
+  postPhoto,getCards
 } from './components/api'
 
 
@@ -54,7 +54,7 @@ popupCloseButtons.forEach(popup => {
   popup.addEventListener('click', (evt) => closePopup(evt.target.closest('.popup')))
 });
 
-// редактирование профиля
+//редактирование профиля
 profileButtonEdit.addEventListener('click', () => {
   openPopup(profileEditPopup);
   newName.value = profileName.textContent;
@@ -63,9 +63,11 @@ profileButtonEdit.addEventListener('click', () => {
 
 profileEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
   evt.preventDefault();
+  profileEditPopup.querySelector('.popup__button').textContent = 'Сохранение...'
   profileName.textContent = newName.value;
   profileDescription.textContent = newDescription.value;
-  pathNewName()
+  pathNewName();
+  getAppInfo();
   closePopup(profileEditPopup)
 });
 
@@ -76,16 +78,17 @@ profileButtonPhotoEdit.addEventListener('click', () => {
 })
 profilePhotoEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
   evt.preventDefault();
+  profilePhotoEditPopup.querySelector('.popup__button').textContent = 'Сохранение...'
   postPhoto(newPhoto.value);
-  getPhoto();
+  getAppInfo()
   newPhoto.value = '';
 });
 
 
-//разметка, удаление, лайк, увеличение
 function addCards(card) {
   elementsList.prepend(createElement(card));
 }
+
 //отрисовка карточек полученных с сервера
 const renderCards = () => {
   cards.reverse().forEach(card => {
@@ -103,7 +106,9 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
     myCard: true,
     id: postCard(cardDescription.value, cardLink.value)
   }
+  cardAddPopup.querySelector('.popup__button').textContent = 'Сохранение...'
   addCards(card);
+  getAppInfo();
   cardDescription.value = '';
   cardLink.value = '';
   addCardSubmitButton.disabled = true;

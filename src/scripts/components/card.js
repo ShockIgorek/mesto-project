@@ -6,7 +6,7 @@ import {
   pathLikes,
   deleteLikes,
   updateLikes,
-  deleteCard
+  deleteCard,getCards
 } from './api'
 const createElement = (card) => {
   const cardCreation = document.querySelector('.card').content;
@@ -45,7 +45,7 @@ const createElement = (card) => {
 
   });
   //увеличение
-  cardImage.addEventListener('click', () => openPhotoPopup(card))
+  cardImage.addEventListener('click', () => openPhotoPopup(card));
   return element;
 }
 

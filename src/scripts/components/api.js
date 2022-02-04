@@ -6,7 +6,9 @@ const profileName = profile.querySelector('.profile__name');
 const profileDescription = profile.querySelector('.profile__description');
 const profileButtonPhotoEdit = profile.querySelector('.profile__avatar');
 const profilePhotoEditPopup = document.querySelector('.popup-edit-avatar');
-
+const profileEditPopup = document.querySelector('.popup_edit');
+const newName = profileEditPopup.querySelector('.popup__input_name');
+const newDescription = profileEditPopup.querySelector('.popup__input_description');
 export let cards = []
 
 export const config = {
@@ -16,9 +18,6 @@ export const config = {
     "Content-Type": "application/json",
   }
 
-};
-const getResponseData = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 };
 
 export function pathLikes(id) {
@@ -56,7 +55,6 @@ export function postCard(card, link) {
       })
     }).then(res => res.json())
     .then((result) => {
-      document.querySelector('.popup__add-button').textContent = 'Сохранение...'
       console.log(result._id)
       closePopup(popup)
       return result
@@ -145,7 +143,9 @@ export function pathNewName() {
       name: newName.value,
       about: newDescription.value
     })
-  })
+  }).then(() => {
+      console.log('Новое имя: ' + getName())
+    })
 };
 
 export function postPhoto(link) {

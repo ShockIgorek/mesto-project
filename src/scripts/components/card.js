@@ -5,7 +5,8 @@ import {
 import {
   pathLikes,
   deleteLikes,
-  updateLikes
+  updateLikes,
+  deleteCard
 } from './api'
 const createElement = (card) => {
   const cardCreation = document.querySelector('.card').content;
@@ -27,6 +28,7 @@ const createElement = (card) => {
 
   //удаление
   buttonDelete.addEventListener('click', (evt) => {
+    deleteCard(id)
     evt.target.closest('.element').remove()
   });
   //лайк

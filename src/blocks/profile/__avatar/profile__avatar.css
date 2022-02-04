@@ -1,7 +1,24 @@
 .profile__avatar {
+  position: relative;
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-image: url(../../../images/avatar.jpg);
   background-size: cover;
+  border: none;
+}
+
+.profile__avatar:hover:after {
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: absolute;
+  content: '';
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url(../../../images/Edit-profile.svg);
+  background-size: 26px;
+  background-repeat: no-repeat;
+  background-position: center
 }

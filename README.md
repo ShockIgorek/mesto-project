@@ -1,5 +1,5 @@
 # Проект: Место
-<https://shokigorek.github.io/mesto/>
+<https://shockigorek.github.io/mesto-project/>
 **технологии:**
 - html
 - js

@@ -28,10 +28,10 @@ const closePopup = (popup) => {
 }
 
 
-const openPhotoPopup = (card) => {
-  fullScreen.src = card.link;
-  fullScreen.alt = card.name;
-  description.textContent = card.name;
+const openPhotoPopup = (name, link) => {
+  fullScreen.src = link;
+  fullScreen.alt = name;
+  description.textContent = name;
   openPopup(photoPopup);
 }
 

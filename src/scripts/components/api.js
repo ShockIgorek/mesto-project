@@ -1,6 +1,4 @@
 
-import { newNameInput, newDescription } from "./constants";
-
 export const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-6',
   headers: {
@@ -46,13 +44,13 @@ export function postCard(card, link) {
   }).then(res => getResponseData(res))
 }
 
-export function pathNewName() {
+export function pathNewName(name, about) {
   return fetch(config.baseUrl + '/users/me', {
       method: 'PATCH',
       headers: config.headers,
       body: JSON.stringify({
-        name: newNameInput.value,
-        about: newDescription.value
+        name: name,
+        about: about
       })
     }).then(res => getResponseData(res))
 };
@@ -71,3 +69,12 @@ export function postPhoto(link) {
     })
   }).then(res => getResponseData(res))
 };
+
+export function deleteLikes(id) {
+  console.log(id)
+  return fetch(config.baseUrl + '/cards/likes/' + id, {
+    method: 'DELETE',
+    headers: config.headers,
+  }).then(res => getResponseData(res))
+}
+

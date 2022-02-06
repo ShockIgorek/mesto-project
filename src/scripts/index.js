@@ -1,6 +1,4 @@
-//Дорогой ревьюер , у меня нету бага с белым аватаром... может кроссбраузерность какая-то,
-//или картинка которую ты хочешь поставить не хочет грузится
-
+//Дорогой ревьюер, сейчас открыв проект у меня был вместо аватара белый фон, я поставил свой и он благополучно остался...
 
 //css
 import '../pages/index.css';
@@ -59,28 +57,15 @@ popupCloseButtons.forEach(popup => {
 });
 
 
-function getUserInfo() {
-  return getInfo().then((result) => {
-    let info = []
-    info[0] = result.name;
-    info[1] = result.about;
-    info[2] = result._id;
-    info[3] = result.avatar;
-    return info;
-  }).catch(error => {
-    console.log(error)
-  })
-}
 
-
-Promise.all([getUserInfo(), getCards()])
+Promise.all([getInfo(), getCards()])
   .then(([userData, cards]) => {
-    profileName.textContent = userData[0];
-    profileDescription.textContent = userData[1];
-    profileButtonPhotoEdit.style = `background-image: url(${userData[3]})`
+    profileName.textContent = userData.name;
+    profileDescription.textContent = userData.about;
+    profileButtonPhotoEdit.style = `background-image: url(${userData.avatar})`
     for (let i = cards.length - 1; i >= 0; i--) {
-      const myLike = Boolean(cards[i].likes.find(user => user._id === userData[2]));
-      const myCard = Boolean(cards[i].owner._id === userData[2])
+      const myLike = Boolean(cards[i].likes.find(user => user._id === userData._id));
+      const myCard = Boolean(cards[i].owner._id === userData._id)
       elementsList.prepend(createElement(
         cards[i].name,
         cards[i].link,
@@ -89,7 +74,7 @@ Promise.all([getUserInfo(), getCards()])
         myLike,
         myCard))
     }
-    return userData[2];
+    return userData._id;
   }).catch(err => {
     console.log(err)
   });
@@ -132,11 +117,12 @@ profileButtonEdit.addEventListener('click', () => {
 profileEditPopupForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   profileEditPopupButton.textContent = 'Сохранение...'
-  pathNewName().then((result) => {
-    console.log(result)
+
+  pathNewName(newNameInput.value, newDescription.value).then((result) => {
     profileName.textContent = result.name;
     profileDescription.textContent = result.about;
     profileEditPopupButton.disabled = true;
+    profileEditPopupButton.classList.add('popup__button_disabled');
     closePopup(profileEditPopup)
   }).catch(err => console.log(err)).finally(() => {
     profileEditPopupButton.textContent = 'Сохранить';
@@ -156,6 +142,7 @@ profilePhotoEditPopupForm.addEventListener('submit', (evt) => {
     profileButtonPhotoEdit.style = `background-image: url(${result.avatar})`;
     newPhoto.value = '';
     profilePhotoEditPopupButton.disabled = true;
+    profilePhotoEditPopupButton.classList.add('popup__button_disabled');
     closePopup(profilePhotoEditPopup);
   })
   .catch(err => console.log(err))

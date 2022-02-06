@@ -3,20 +3,10 @@ import {
   openPhotoPopup
 } from './modal'
 import {
-  config,
-  getResponseData,
   deleteCard,
   pathLikes,
-  getCards
+  deleteLikes,
 } from './api'
-
-function deleteLikes(id) {
-  console.log(id)
-  return fetch(config.baseUrl + '/cards/likes/' + id, {
-    method: 'DELETE',
-    headers: config.headers,
-  }).then(res => getResponseData(res)).catch(err => console.log(err))
-}
 
 
 export const createElement = (name, link, id ,likes, myLike, myCard) => {
@@ -59,7 +49,7 @@ export const createElement = (name, link, id ,likes, myLike, myCard) => {
     }
   });
   //увеличение
-  cardImage.addEventListener('click', () => openPhotoPopup(card));
+  cardImage.addEventListener('click', () => openPhotoPopup(name, link));
   return element;
 }
 

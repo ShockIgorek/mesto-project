@@ -51,36 +51,6 @@ popupCloseButtons.forEach(popup => {
   popup.addEventListener('click', (evt) => closePopup(evt.target.closest('.popup')))
 });
 
-//редактирование профиля
-profileButtonEdit.addEventListener('click', () => {
-  openPopup(profileEditPopup);
-  newName.value = profileName.textContent;
-  newDescription.value = profileDescription.textContent;
-});
-
-profileEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  profileEditPopup.querySelector('.popup__button').textContent = 'Сохранение...'
-  profileName.textContent = newName.value;
-  profileDescription.textContent = newDescription.value;
-  pathNewName();
-  getAppInfo();
-  closePopup(profileEditPopup)
-});
-
-//редактирование фото профиля
-profileButtonPhotoEdit.addEventListener('click', () => {
-  openPopup(profilePhotoEditPopup);
-  console.log('был клик')
-})
-profilePhotoEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  profilePhotoEditPopup.querySelector('.popup__button').textContent = 'Сохранение...'
-  postPhoto(newPhoto.value);
-  getAppInfo()
-  newPhoto.value = '';
-});
-
 
 function addCards(card) {
   elementsList.prepend(createElement(card));
@@ -131,7 +101,7 @@ const renderProfile = () => {
 
 
 let cards = []
-const getCards = () => {
+function getCards() {
   return fetch(config.baseUrl + '/cards', {
     headers: config.headers
   }).then(res => getResponseData(res))
@@ -208,8 +178,62 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
     .catch(err => console.log(err))
 });
 
+//изменение профиля
+function pathNewName() {
+  return fetch(config.baseUrl + '/users/me', {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      name: newName.value,
+      about: newDescription.value
+    })
+  }).then(res => getResponseData(res))
+  .catch(err => console.log(err))
+};
+
+profileButtonEdit.addEventListener('click', () => {
+  openPopup(profileEditPopup);
+  newName.value = profileName.textContent;
+  newDescription.value = profileDescription.textContent;
+});
+
+profileEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  profileEditPopup.querySelector('.popup__button').textContent = 'Сохранение...'
+  pathNewName().then((result) => {
+    console.log(result)
+    profileName.textContent = result.name;
+    profileDescription.textContent = result.about;
+    profileEditPopup.querySelector('.popup__button').textContent = 'Сохранить'
+    closePopup(profileEditPopup)
+  })
+});
+
+//редактирование фотографии профиля
+function postPhoto(link) {
+  return fetch(config.baseUrl + '/users/me/avatar', {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: link
+    })
+  }).then(res => getResponseData(res)).catch(err => console.log(err))
+};
+
+profileButtonPhotoEdit.addEventListener('click', () => {
+  openPopup(profilePhotoEditPopup);
+})
+
+profilePhotoEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  profilePhotoEditPopup.querySelector('.popup__button').textContent = 'Сохранение...'
+  postPhoto(newPhoto.value).then(result => {
+    profileButtonPhotoEdit.style = `background-image: url(${result.avatar})`;
+    profileEditPopup.querySelector('.popup__button').textContent = 'Сохранить';
+    closePopup(profilePhotoEditPopup);
+  })
+  newPhoto.value = '';
+});
 
 
-console.log(getCards())
-console.log(cards)
-console.log(myId)
+

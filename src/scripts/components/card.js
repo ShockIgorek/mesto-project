@@ -29,7 +29,7 @@ function deleteLikes(id) {
     headers: config.headers,
   }).then(res => getResponseData(res)).catch(err => console.log(err))
 }
-const createElement = (card) => {
+export const createElement = (card) => {
   const cardCreation = document.querySelector('.card').content;
   const element = cardCreation.querySelector('.element').cloneNode(true);
   const cardImage = element.querySelector('.element__photo');
@@ -75,9 +75,3 @@ const createElement = (card) => {
   return element;
 }
 
-
-
-
-export {
-  createElement
-}

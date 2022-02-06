@@ -37,6 +37,11 @@ const cardLink = cardAddPopup.querySelector('.popup__input_card-link');
 const popupCloseButtons = document.querySelectorAll('.popup__button-close');
 const addCardSubmitButton = document.querySelector('.popup__add-button');
 const elementsList = document.querySelector('.elements__list');
+const cardAddPopupForm = cardAddPopup.querySelector('.popup__form');
+const profileEditPopupForm = profileEditPopup.querySelector('.popup__form');
+const profileEditPopupButton = profileEditPopup.querySelector('.popup__button');
+const profilePhotoEditPopupForm = profilePhotoEditPopup.querySelector('.popup__form');
+const profilePhotoEditPopupButton = profilePhotoEditPopup.querySelector('.popup__button');
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -51,11 +56,9 @@ popupCloseButtons.forEach(popup => {
   popup.addEventListener('click', (evt) => closePopup(evt.target.closest('.popup')))
 });
 
-
 function addCards(card) {
   elementsList.prepend(createElement(card));
 }
-
 
 function getInfo() {
   return fetch(config.baseUrl + '/users/me', {
@@ -64,7 +67,6 @@ function getInfo() {
     .catch(err => console.log(err))
 
 }
-
 
 const getAppInfo = () => {
   return Promise.all([
@@ -89,7 +91,9 @@ const getAppInfo = () => {
     .catch(err => console.log(err))
   ]);
 };
+
 let myId;
+
 const renderProfile = () => {
   return getAppInfo().then((result) => {
     profileName.textContent = result[0];
@@ -98,7 +102,6 @@ const renderProfile = () => {
     return result[2];
   }).catch((err) => console.log(err))
 }
-
 
 let cards = []
 function getCards() {
@@ -143,7 +146,6 @@ renderProfile().then((result) => {
     })
 })
 
-
 function postCard(card, link) {
   return fetch(config.baseUrl + '/cards', {
     method: 'POST',
@@ -154,12 +156,11 @@ function postCard(card, link) {
     })
   }).then(res => getResponseData(res)).catch(err => console.log(err))
 }
-
 //добавление карточки
 profileButtonPlus.addEventListener('click', () => openPopup(cardAddPopup));
-cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
+cardAddPopupForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  cardAddPopup.querySelector('.popup__button').textContent = 'Сохранение...'
+  addCardSubmitButton.textContent = 'Сохранение...'
   postCard(cardDescription.value, cardLink.value)
     .then((result) => {
       const card = {}
@@ -177,7 +178,6 @@ cardAddPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
     })
     .catch(err => console.log(err))
 });
-
 //изменение профиля
 function pathNewName() {
   return fetch(config.baseUrl + '/users/me', {
@@ -197,14 +197,14 @@ profileButtonEdit.addEventListener('click', () => {
   newDescription.value = profileDescription.textContent;
 });
 
-profileEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
+profileEditPopupForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  profileEditPopup.querySelector('.popup__button').textContent = 'Сохранение...'
+  profileEditPopupButton.textContent = 'Сохранение...'
   pathNewName().then((result) => {
     console.log(result)
     profileName.textContent = result.name;
     profileDescription.textContent = result.about;
-    profileEditPopup.querySelector('.popup__button').textContent = 'Сохранить'
+    profileEditPopupButton.textContent = 'Сохранить'
     closePopup(profileEditPopup)
   })
 });
@@ -224,9 +224,9 @@ profileButtonPhotoEdit.addEventListener('click', () => {
   openPopup(profilePhotoEditPopup);
 })
 
-profilePhotoEditPopup.querySelector('.popup__form').addEventListener('submit', (evt) => {
+profilePhotoEditPopupForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  profilePhotoEditPopup.querySelector('.popup__button').textContent = 'Сохранение...'
+  profilePhotoEditPopupButton.textContent = 'Сохранение...'
   postPhoto(newPhoto.value).then(result => {
     profileButtonPhotoEdit.style = `background-image: url(${result.avatar})`;
     profileEditPopup.querySelector('.popup__button').textContent = 'Сохранить';
